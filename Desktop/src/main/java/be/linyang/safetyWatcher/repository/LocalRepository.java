@@ -1,16 +1,17 @@
-package be.cvo.linyang.safetyWatcher.Repository;
+package be.linyang.safetyWatcher.repository;
 
-import be.cvo.linyang.safetyWatcher.Model.Local;
+import be.linyang.safetyWatcher.model.Local;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
- * Created by yanglin on 26/05/17.
+ * Created by yanglin on 28/05/17.
  */
+
 @Repository
-public interface LocalRepository extends CrudRepository<Local, Long> {
+public interface LocalRepository extends CrudRepository<Local,Long> {
     List<Local> findAll();
     Local findByName(String name);
 }

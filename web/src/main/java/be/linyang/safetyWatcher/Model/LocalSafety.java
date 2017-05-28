@@ -1,4 +1,4 @@
-package be.cvo.linyang.safetyWatcher.Model;
+package be.linyang.safetyWatcher.Model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -67,6 +67,8 @@ public class LocalSafety {
 
     public void setAvailable(boolean available) {
         this.available = available;
+        if (!this.available)
+            this.setExpiryDate(null);
     }
 
     public LocalDate getExpiryDate() {
@@ -77,8 +79,7 @@ public class LocalSafety {
         this.expiryDate = expiryDate;
     }
 
-    public boolean isExpired()
-    {
-        return expiryDate.isBefore(LocalDate.now());
+    public boolean isExpired() {
+        return expiryDate != null && expiryDate.isBefore(LocalDate.now());
     }
 }

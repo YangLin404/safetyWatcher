@@ -1,8 +1,8 @@
-package be.cvo.linyang.safetyWatcher.Controllers;
+package be.linyang.safetyWatcher.Controllers;
 
-import be.cvo.linyang.safetyWatcher.Model.Local;
-import be.cvo.linyang.safetyWatcher.Model.LocalSafety;
-import be.cvo.linyang.safetyWatcher.Repository.LocalRepository;
+import be.linyang.safetyWatcher.Model.Local;
+import be.linyang.safetyWatcher.Model.LocalSafety;
+import be.linyang.safetyWatcher.Repository.LocalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,9 +29,9 @@ public class HomeController {
     @PostConstruct
     private void init()
     {
+        /*
         Random random = new Random(System.currentTimeMillis());
-        Arrays.stream(locals)
-                .forEach(l -> {
+        Arrays.stream(locals).forEach(l -> {
                     Local local = new Local(l);
                     Set<LocalSafety> safeties = new HashSet<>();
                     int num1 = random.nextInt(2);
@@ -43,6 +43,7 @@ public class HomeController {
                     local.setSafeties(safeties);
                     localRepository.save(local);
                 });
+        */
     }
 
 

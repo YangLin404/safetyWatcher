@@ -1,7 +1,7 @@
-package be.cvo.linyang.safetyWatcher.Controllers;
+package be.linyang.safetyWatcher.Controllers;
 
-import be.cvo.linyang.safetyWatcher.Model.Local;
-import be.cvo.linyang.safetyWatcher.Repository.LocalRepository;
+import be.linyang.safetyWatcher.Model.Local;
+import be.linyang.safetyWatcher.Repository.LocalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -41,7 +41,7 @@
     <div class="container">
         <h1 class="col-12">School plattegrond</h1>
         <div class="col-12">
-            <img src="img/plattegrond.jpg" class="img-fluid" usemap="#plattegrond" height="566" width="1379"/>
+            <img th:src="@{/img/plattegrond.jpg}" class="img-fluid" usemap="#plattegrond" height="566" width="1379"/>
             <map name="plattegrond">
                 <area title="groep 1 en 2" shape="rect" coords="7,342,324,554" th:href="@{/detail(localName='groep 1 en 2')}"/>
                 <area alt="" title="groep 3, 4 en 5" th:href="@{/detail(localName='groep 3, 4 en 5')}" shape="rect" coords="425,10,734,220" />

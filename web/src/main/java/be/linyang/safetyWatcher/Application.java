@@ -1,4 +1,4 @@
-package be.cvo.linyang.safetyWatcher;
+package be.linyang.safetyWatcher;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

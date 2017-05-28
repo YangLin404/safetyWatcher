@@ -1,6 +1,6 @@
 
 
-package be.cvo.linyang.safetyWatcher.Model;
+package be.linyang.safetyWatcher.model;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,7 +15,7 @@ public class Local {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
     private String name;
-    @OneToMany(mappedBy = "local", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "local", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<LocalSafety> safeties;
 
     public Local()

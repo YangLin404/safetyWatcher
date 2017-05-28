@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>be.cvo.linyang</groupId>
-    <artifactId>safety-watcher</artifactId>
+    <artifactId>safety-watcher-web</artifactId>
     <version>0.1.0</version>
 
     <parent>

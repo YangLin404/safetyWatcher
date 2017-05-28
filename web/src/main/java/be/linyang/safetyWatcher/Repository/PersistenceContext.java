@@ -1,4 +1,4 @@
-package be.cvo.linyang.safetyWatcher.Repository;
+package be.linyang.safetyWatcher.Repository;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -19,7 +19,7 @@ import java.util.Properties;
  * Created by yanglin on 26/05/17.
  */
 @Configuration
-@EnableJpaRepositories(basePackages = {"be.cvo.linyang.safetyWatcher"})
+@EnableJpaRepositories(basePackages = {"be.linyang.safetyWatcher"})
 @EnableTransactionManagement
 public class PersistenceContext
 {
@@ -42,7 +42,7 @@ public class PersistenceContext
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setPackagesToScan("be.cvo.linyang.safetyWatcher");
+        entityManagerFactoryBean.setPackagesToScan("be.linyang.safetyWatcher");
 
         Properties jpaProperties = new Properties();
 

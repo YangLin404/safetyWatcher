@@ -38,27 +38,19 @@
         <div class="col-12">
             <h2 class="my-4" th:text="${local.name}"></h2>
             <table class="table table-striped">
-                <thead class="thead-default">
+                <thead class="thead-inverse">
                 <tr>
                     <th>Veiligheid</th>
                     <th>Aanwezigheid</th>
                     <th>Vervaldatum</th>
                 </tr>
                 </thead>
-                <tr th:each="safety : ${local.safeties}" class="bg-success" th:if="${safety.available and not safety.isExpired()}">
-                    <th th:text="${safety.name}"></th>
+                <tr th:each="safety : ${local.safeties}"  >
+                    <th th:text="${safety.name}" class="bg-success" th:if="${safety.available and not safety.isExpired()}"></th>
+                    <th th:text="${safety.name}" class="bg-warning" th:if="${safety.available and safety.isExpired()}"></th>
+                    <th th:text="${safety.name}" class="bg-danger" th:if="${not safety.available}"></th>
                     <td th:text="${safety.available}?'aanwezig':'niet aanwezig'"></td>
-                    <td th:text="${safety.available}?${safety.expiryDate}:''"></td>
-                </tr>
-                <tr th:each="safety : ${local.safeties}" class="bg-warn" th:if="${safety.available and safety.isExpired()}">
-                    <th th:text="${safety.name}"></th>
-                    <td th:text="${safety.available}?'aanwezig':'niet aanwezig'"></td>
-                    <td th:text="${safety.available}?${safety.expiryDate}:''"></td>
-                </tr>
-                <tr th:each="safety : ${local.safeties}" class="bg-danger" th:if="${not safety.available}">
-                    <th th:text="${safety.name}"></th>
-                    <td th:text="${safety.available}?'aanwezig':'niet aanwezig'"></td>
-                    <td th:text="${safety.available}?${safety.expiryDate}:''"></td>
+                    <td th:text="${safety.available}?${safety.expiryDate}:'N/A'"></td>
                 </tr>
             </table>
     </div>
