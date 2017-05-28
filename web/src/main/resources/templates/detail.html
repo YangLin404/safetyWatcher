@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8"/>
+    <title th:text="${local.name}"></title>
+</head>
+<body>
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">Safety Watcher</a>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item active dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lokalen</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <div th:each="local : ${locals}">
+                        <a class="dropdown-item" th:text="${local.name}" href="detail.html" th:href="@{/detail(localName=${local.name})}"></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+        <div class="col-12">
+            <h2 class="my-4" th:text="${local.name}"></h2>
+            <table class="table table-striped">
+                <thead class="thead-default">
+                <tr>
+                    <th>Veiligheid</th>
+                    <th>Aanwezigheid</th>
+                    <th>Vervaldatum</th>
+                </tr>
+                </thead>
+                <tr th:each="safety : ${local.safeties}" class="bg-success" th:if="${safety.available and not safety.isExpired()}">
+                    <th th:text="${safety.name}"></th>
+                    <td th:text="${safety.available}?'aanwezig':'niet aanwezig'"></td>
+                    <td th:text="${safety.available}?${safety.expiryDate}:''"></td>
+                </tr>
+                <tr th:each="safety : ${local.safeties}" class="bg-warn" th:if="${safety.available and safety.isExpired()}">
+                    <th th:text="${safety.name}"></th>
+                    <td th:text="${safety.available}?'aanwezig':'niet aanwezig'"></td>
+                    <td th:text="${safety.available}?${safety.expiryDate}:''"></td>
+                </tr>
+                <tr th:each="safety : ${local.safeties}" class="bg-danger" th:if="${not safety.available}">
+                    <th th:text="${safety.name}"></th>
+                    <td th:text="${safety.available}?'aanwezig':'niet aanwezig'"></td>
+                    <td th:text="${safety.available}?${safety.expiryDate}:''"></td>
+                </tr>
+            </table>
+    </div>
+</body>
+</html>

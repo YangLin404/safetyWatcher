@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script type="text/javascript" th:src="@{/js/lib/jquery.rwdImageMaps.js}"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Safety watcher</title>
+</head>
+<body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Safety Watcher</a>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lokalen</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <div th:each="local : ${locals}">
+                            <a class="dropdown-item" th:text="${local.name}" href="detail.html" th:href="@{/detail(localName=${local.name})}"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="col-12">School plattegrond</h1>
+        <div class="col-12">
+            <img src="img/plattegrond.jpg" class="img-fluid" usemap="#plattegrond" height="566" width="1379"/>
+            <map name="plattegrond">
+                <area title="groep 1 en 2" shape="rect" coords="7,342,324,554" th:href="@{/detail(localName='groep 1 en 2')}"/>
+                <area alt="" title="groep 3, 4 en 5" th:href="@{/detail(localName='groep 3, 4 en 5')}" shape="rect" coords="425,10,734,220" />
+                <area alt="" title="groep 6, 7 en 8" th:href="@{/detail(localName='groep 6, 7 en 8')}" shape="rect" coords="742,9,1047,222" />
+                <area alt="" title="magazijn 1" th:href="@{/detail(localName='magazijn 1')}" shape="rect" coords="93,187,162,334" />
+                <area alt="" title="directie kamer" th:href="@{/detail(localName='directie kamer')}" shape="rect" coords="170,186,325,335" />
+                <area alt="" title="WC 1" th:href="@{/detail(localName='WC 1')}" shape="rect" coords="331,489,420,554" />
+                <area alt="" title="gang" th:href="@{/detail(localName='gang')}" shape="rect" coords="331,231,1250,334" />
+                <area alt="" title="koffiekamer" th:href="@{/detail(localName='koffiekamer')}" shape="rect" coords="1054,9,1251,107" />
+                <area alt="" title="magazijn 2" th:href="@{/detail(localName='magazijn 2')}" shape="rect" coords="1098,116,1137,221" />
+                <area alt="" title="WC 2" th:href="@{/detail(localName='WC 2')}" shape="rect" coords="1132,397,1251,516" />
+                <area alt="" title="kast" th:href="@{/detail(localName='kast')}" shape="rect" coords="1195,186,1250,220" />
+                <area alt="" title="kantoor team" th:href="@{/detail(localName='kantoor team')}" shape="rect" coords="1069,345,1121,518" />
+                <area alt="" title="WC 3" th:href="@{/detail(localName='WC 3')}" shape="rect" coords="1132,396,1250,516" />
+            </map>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/lib/jquery.rwdImageMaps.js}"></script>
+    <script>
+        $(document).ready(function(e) {
+	        $('img[usemap]').rwdImageMaps();
+        });
+    </script>
+</body>
+</html>
