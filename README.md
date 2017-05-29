@@ -38,14 +38,16 @@ The purpose of this project is to give a overview of safety aspects of a school.
 		mvn spring-boot:run
 	```
 	
-4. build desktop part
+4. access the webapplication at localhost:8080
+	
+5. build desktop part
 
 	```shell
 		cd /path_to_sourcecode/Desktop
 		mvn package
 	```
 	
-5. run desktop application
+6. run desktop application
 	
 	```shell
 		mvn spring-boot:run
